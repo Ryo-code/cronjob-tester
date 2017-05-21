@@ -47,7 +47,7 @@ const everyMorning = new CronJob('00 15 08 * * 0-6', () => {
 
 const mornin = new CronJob('00 20 01 * * *', () => {
   // This cronjob will run at 01:20:00(AM) everyday
-  console.log("BEEP BOOP, it's 1:05AM mothafuckaa~");
+  console.log("BEEP BOOP, it's 1:20AM mothafuckaa~");
 }, null, true, 'America/Chicago');
 
 
