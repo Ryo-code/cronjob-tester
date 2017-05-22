@@ -1,6 +1,8 @@
 'use strict';
 var express = require('express');
+var moment = require("moment");
 var CronJob = require('cron').CronJob;
+moment().format('MMMM Do YYYY, h:mm:ss a'); // May 22nd 2017, 5:38:04 pm
 
 var app = express();
 
