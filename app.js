@@ -1,11 +1,16 @@
 'use strict';
 var express = require('express');
-var moment = require("moment");
+var moment  = require("moment");
+var cheerio = require('cheerio');
+var request = require('request');
+
 var CronJob = require('cron').CronJob;
-var cheerio = require('cheerio'),
+var app = express();
 var $ = cheerio.load('<ul id = "fruits">...</ul>');
 
-var app = express();
+
+// https://www.beagreatteacher.com/daily-fun-fact/
+
 
 /*
   moment().fromNow(); //This will say "a few seconds ago"/"1 week ago", etc.
@@ -46,7 +51,6 @@ var job2 = new CronJob({
   start: false,
   timeZone: 'America/Los_Angeles'
 });
-
 // job2.start(); // job 2 started
 
 const everyMorning = new CronJob('00 15 08 * * 0-6', () => {
