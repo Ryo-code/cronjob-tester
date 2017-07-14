@@ -14,7 +14,7 @@ var app = express();
 
 new CronJob('* * * * * *', () => {
   const rightNow = moment().format('MMMM Do YYYY, h:mm:ss a'); //"May 22nd 2017, 5:38:04 pm"
-  console.log(rightNow)
+  console.log("Runs every second...", rightNow)
 }, null, true, 'America/Chicago');
 
 new CronJob('0 * * * * *', () => {
@@ -42,10 +42,13 @@ new CronJob('0 0 08 * * *', () => {
   console.log("Run every day at 8:00 AM --->");
 }, null, true, 'America/Chicago');
 
+new CronJob('0 0 08 1 * *', () => {
+  console.log("Run at 8:00 AM on the first of every month --->");
+}, null, true, 'America/Chicago');
+
 const everyMorning = new CronJob('0 15 08 * * *', () => {
   // This cronjob will run at 08:15:00(AM) everyday
-  console.log("BEEP BOOP, it's 8:15~");
-  console.log("This very moment is: ", rightNow);
+  console.log("BEEP BOOP, it's 8:15AM~");
 }, null, true, 'America/Chicago');
 
 app.get("/", (req, res) => {
