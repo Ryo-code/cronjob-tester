@@ -11,10 +11,16 @@ var app = express();
 
 //Cronjob arguments: Seconds(0-59) Minutes(0-59) Hours(0-23) Day_Of_Month(1-31) Months(0-11) Day_Of_Week(0-6)
 //Note: You gotta be careful with the * vs 0.
+//Note: You can use commas for multiple instances in the same parameter
 
 new CronJob('* * * * * *', () => {
   const rightNow = moment().format('MMMM Do YYYY, h:mm:ss a'); //"May 22nd 2017, 5:38:04 pm"
   console.log("Runs every second...", rightNow)
+}, null, true, 'America/Chicago');
+
+new CronJob('0,10,15,20,45 * * * * *', () => {
+  const rightNow = moment().format('MMMM Do YYYY, h:mm:ss a'); //"May 22nd 2017, 5:38:04 pm"
+  console.log("Runs each minute at 0, 10, 15, 20, and 45 seconds. :D", rightNow)
 }, null, true, 'America/Chicago');
 
 new CronJob('0 * * * * *', () => {
@@ -26,8 +32,7 @@ new CronJob('30 * * * * *', () => {
 }, null, true, 'America/Chicago');
 
 new CronJob('* 0 * * * *', () => {
-  console.log("Run every second on the first minute of each hour...");
-  console.log("I assume you didn't mean to do this, silly. Why would you do this??")
+  console.log("Run every second on the first minute of each hour... but why??? This is weird! @_@");
 }, null, true, 'America/Chicago');
 
 new CronJob('0 0 * * * *', () => {
