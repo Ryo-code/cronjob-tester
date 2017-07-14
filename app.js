@@ -8,32 +8,36 @@ var CronJob = require('cron').CronJob;
 var app = express();
 
 //Cronjob arguments: Seconds(0-59) Minutes(0-59) Hours(0-23) Day_Of_Month(1-31) Months(0-11) Day_Of_Week(0-6)
-
 new CronJob('* * * * * *', () => {
-  // console.log('1 seconds have elapsed~~!!');
-  var rightNow = moment().format('MMMM Do YYYY, h:mm:ss a'); // May 22nd 2017, 5:38:04 pm
-  console.log("This very moment is: ", rightNow);
-
-  factOfTheDay();
-
+  const rightNow = moment().format('MMMM Do YYYY, h:mm:ss a'); //"May 22nd 2017, 5:38:04 pm"
+  console.log(rightNow)
 }, null, true, 'America/Chicago');
 
-const factOfTheDay = () => {
-  request('https://www.beagreatteacher.com/daily-fun-fact/', function(err, resp, html) {
-    if (!err){
-      var $ = cheerio.load(html);
-      var factContent = $('span:contains("Random Fact of the Day:")').parent().parent().next().text() //It's weird because of the way their HTML is structured
-      console.log("Random fact:", factContent);
-    }else{
-      console.log("Error!", err);
-    }
-  });
-}
+new CronJob('0 * * * * *', () => {
+  console.log("Every minute");
+}, null, true, 'America/Chicago');
+
+new CronJob('30 * * * * *', () => {
+  console.log("Also every minute, but on the 30th second");
+}, null, true, 'America/Chicago');
+
+new CronJob('* 0 * * * *', () => {
+  console.log("Every hour --->");
+}, null, true, 'America/Chicago');
+
+new CronJob('* * 0 * * *', () => {
+  console.log("Every day @ midnight --->");
+}, null, true, 'America/Chicago');
+
+new CronJob('* * 08 * * *', () => {
+  console.log("Every day at 8:00 AM --->");
+}, null, true, 'America/Chicago');
+
 
 const everyMorning = new CronJob('00 15 08 * * 0-6', () => {
   // This cronjob will run at 08:15:00(AM) everyday
   console.log("BEEP BOOP, it's 8:15~");
-  console.log("This very moment is: ", rightNow)
+  console.log("This very moment is: ", rightNow);
 }, null, true, 'America/Chicago');
 
 app.get("/", (req, res) => {
