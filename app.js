@@ -18,42 +18,42 @@ new CronJob('* * * * * *', () => {
   console.log("Runs every second...", rightNow)
 }, null, true, 'America/Los_Angeles');
 
-new CronJob('0,10,15,20,45 * * * * *', () => {
-  const rightNow = moment().format('MMMM Do YYYY, h:mm:ss a'); //"May 22nd 2017, 5:38:04 pm"
-  console.log("Runs each minute at 0, 10, 15, 20, and 45 seconds. :D", rightNow)
+new CronJob('0,10,15,20,45 * * * * *', () => {  //Note the spaces & commas – crucial
+  const rightNow = moment().format('MMMM Do YYYY, h:mm:ss a');
+  console.log("#2: Runs each minute at 0, 10, 15, 20, and 45 seconds. :D", rightNow)
 }, null, true, 'America/Los_Angeles');
 
 new CronJob('0 * * * * *', () => {
-  console.log("Run every minute, on the first second of each minute");
+  console.log("#3: Run every minute, on the first second of each minute");
 }, null, true, 'America/Los_Angeles');
 
 new CronJob('30 * * * * *', () => {
-  console.log("Also run every minute, but on the 30th second of each minute");
+  console.log("#4: Also run every minute, but on the 30th second of each minute");
 }, null, true, 'America/Los_Angeles');
 
 new CronJob('* 0 * * * *', () => {
-  console.log("Run every second on the first minute of each hour... but why??? This is weird! @_@");
+  console.log("#5: Run every second on the first minute of each hour... but why??? This is weird! @_@");
 }, null, true, 'America/Los_Angeles');
 
 new CronJob('0 0 * * * *', () => {
-  console.log("Run once an hour, on the hour --->");
+  console.log("#6: Run once an hour, on the hour --->");
 }, null, true, 'America/Los_Angeles');
 
 new CronJob('0 0 0 * * *', () => {
-  console.log("Run every day at midnight --->");
+  console.log("#7: Run every day at midnight --->");
 }, null, true, 'America/Los_Angeles');
 
 new CronJob('0 0 08 * * *', () => {
-  console.log("Run every day at 8:00 AM --->");
+  console.log("#8: Run every day at 8:00 AM --->");
 }, null, true, 'America/Los_Angeles');
 
 new CronJob('0 0 08 1 * *', () => {
-  console.log("Run at 8:00 AM on the first of every month --->");
+  console.log("#9: Run at 8:00 AM on the first of every month --->");
 }, null, true, 'America/Los_Angeles');
 
 const everyMorning = new CronJob('0 15 08 * * *', () => {
   // This cronjob will run at 08:15:00(AM) everyday
-  console.log("BEEP BOOP, it's 8:15AM~");
+  console.log("#10: BEEP BOOP, it's 8:15AM~");
 }, null, true, 'America/Los_Angeles');
 
 app.get("/", (req, res) => {
