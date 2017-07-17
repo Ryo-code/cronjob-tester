@@ -16,45 +16,45 @@ var app = express();
 new CronJob('* * * * * *', () => {
   const rightNow = moment().format('MMMM Do YYYY, h:mm:ss a'); //"May 22nd 2017, 5:38:04 pm"
   console.log("Runs every second...", rightNow)
-}, null, true, 'America/Chicago');
+}, null, true, 'America/Los_Angeles');
 
 new CronJob('0,10,15,20,45 * * * * *', () => {
   const rightNow = moment().format('MMMM Do YYYY, h:mm:ss a'); //"May 22nd 2017, 5:38:04 pm"
   console.log("Runs each minute at 0, 10, 15, 20, and 45 seconds. :D", rightNow)
-}, null, true, 'America/Chicago');
+}, null, true, 'America/Los_Angeles');
 
 new CronJob('0 * * * * *', () => {
   console.log("Run every minute, on the first second of each minute");
-}, null, true, 'America/Chicago');
+}, null, true, 'America/Los_Angeles');
 
 new CronJob('30 * * * * *', () => {
   console.log("Also run every minute, but on the 30th second of each minute");
-}, null, true, 'America/Chicago');
+}, null, true, 'America/Los_Angeles');
 
 new CronJob('* 0 * * * *', () => {
   console.log("Run every second on the first minute of each hour... but why??? This is weird! @_@");
-}, null, true, 'America/Chicago');
+}, null, true, 'America/Los_Angeles');
 
 new CronJob('0 0 * * * *', () => {
   console.log("Run once an hour, on the hour --->");
-}, null, true, 'America/Chicago');
+}, null, true, 'America/Los_Angeles');
 
 new CronJob('0 0 0 * * *', () => {
   console.log("Run every day at midnight --->");
-}, null, true, 'America/Chicago');
+}, null, true, 'America/Los_Angeles');
 
 new CronJob('0 0 08 * * *', () => {
   console.log("Run every day at 8:00 AM --->");
-}, null, true, 'America/Chicago');
+}, null, true, 'America/Los_Angeles');
 
 new CronJob('0 0 08 1 * *', () => {
   console.log("Run at 8:00 AM on the first of every month --->");
-}, null, true, 'America/Chicago');
+}, null, true, 'America/Los_Angeles');
 
 const everyMorning = new CronJob('0 15 08 * * *', () => {
   // This cronjob will run at 08:15:00(AM) everyday
   console.log("BEEP BOOP, it's 8:15AM~");
-}, null, true, 'America/Chicago');
+}, null, true, 'America/Los_Angeles');
 
 app.get("/", (req, res) => {
   res.send("Good luck with CRON JOB");
